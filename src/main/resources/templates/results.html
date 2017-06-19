@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Your number was: <span th:text="${guess}"></span></h1>
+
+<div th:each="random: ${randoms}">
+<h1>This dice rolled: <span th:text="${random}"></span></h1>
+</div>
+
+
+<h2 th:if="${correct >= 1}">You got <span th:text="${correct}"></span> correct!</h2>
+<h2 th:if="${correct == 0}">Sorry better luck next time.</h2>
+
+
+
+<h2> <a href="/roll-dice"> Try again</a></h2>
+
+</body>
+</html>

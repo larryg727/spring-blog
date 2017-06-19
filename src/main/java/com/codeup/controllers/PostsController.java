@@ -1,10 +1,15 @@
 package com.codeup.controllers;
 
+import com.codeup.Model.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by larryg on 6/19/17.
@@ -13,15 +18,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PostsController {
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String index() {
-        return "posts index page";
+    public String showAll(Model model) {
+        List<Post> postList = new ArrayList<>();
+        postList.add(new Post("Fake title", "body of post. blah...."));
+        postList.add(new Post("Notreal", "More content here... and here and so on"));
+        model.addAttribute("posts", postList);
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public  String post(@PathVariable int id) {
-        return String.format("view an individual post # %s", id);
+    public  String showPost(@PathVariable long id, Model model) {
+        Post post = new Post("here is the title of a post", "here is the body of a post.");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
