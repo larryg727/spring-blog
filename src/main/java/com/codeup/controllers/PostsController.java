@@ -1,6 +1,8 @@
 package com.codeup.controllers;
 
 import com.codeup.Model.Post;
+import com.codeup.Svc.PostSvc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +18,22 @@ import java.util.List;
  */
 @Controller
 public class PostsController {
+    private PostSvc postDao;
+    @Autowired
+    public PostsController(PostSvc postDao) {
+        this.postDao = postDao;
+    }
 
     @GetMapping("/posts")
     public String showAll(Model model) {
-        List<Post> postList = new ArrayList<>();
-        postList.add(new Post("Fake title", "body of post. blah...."));
-        postList.add(new Post("Notreal", "More content here... and here and so on"));
+        List<Post> postList = postDao.findAll();
         model.addAttribute("posts", postList);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public  String showPost(@PathVariable long id, Model model) {
-        Post post = new Post("here is the title of a post", "here is the body of a post.");
+        Post post = postDao.findOne(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
