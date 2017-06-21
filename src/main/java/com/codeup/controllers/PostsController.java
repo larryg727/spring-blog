@@ -25,7 +25,7 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String showAll(Model model) {
-        List<Post> postList = postDao.findAll();
+        Iterable<Post> postList = postDao.findAll();
         model.addAttribute("posts", postList);
         return "posts/index";
     }
@@ -46,13 +46,11 @@ public class PostsController {
     @PostMapping("posts/create")
     public String create(
             @RequestParam(name="title") String title,
-            @RequestParam(name="body") String body,
-            Model model
+            @RequestParam(name="body") String body
     ) {
         Post post = new Post(title, body);
         postDao.save(post);
-        model.addAttribute("post", post);
-        return "posts/create";
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
@@ -66,11 +64,16 @@ public class PostsController {
     public String edit(
             @RequestParam(name="title") String title,
             @RequestParam(name="body") String body,
-            Model model
+            @RequestParam(name="id") long id
     ) {
-        Post post = new Post(title, body);   //creating new post from edit for current testing purposes
+        Post post = new Post(title, body, id);   //creating new post from edit for current testing purposes
         postDao.save(post);
-        model.addAttribute("post", post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        postDao.deletePost(id);
         return "redirect:/posts";
     }
 
