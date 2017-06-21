@@ -63,10 +63,17 @@ public class PostsController {
     @PostMapping("/posts/edit")
     public String edit(
             @RequestParam(name="title") String title,
-            @RequestParam(name="body") String body
+            @RequestParam(name="body") String body,
+            @RequestParam(name="id") long id
     ) {
-        Post post = new Post(title, body);   //creating new post from edit for current testing purposes
+        Post post = new Post(title, body, id);   //creating new post from edit for current testing purposes
         postDao.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable long id) {
+        postDao.deletePost(id);
         return "redirect:/posts";
     }
 

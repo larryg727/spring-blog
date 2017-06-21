@@ -34,6 +34,12 @@ public PostSvc(PostsRepository postsRepository) {
         return postsRepository.findOne(id);
     }
 
+    public void deletePost(long id) {
+     postsRepository.delete(id);
+    }
+
+
+
 
 
 
