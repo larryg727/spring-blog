@@ -15,7 +15,7 @@ public class PostSvc {
 private List<Post> posts = new ArrayList<>();
 
 public PostSvc() {
-   createAds();
+   createPosts();
 }
 
     public List<Post> findAll() {
@@ -32,7 +32,7 @@ public PostSvc() {
         return posts.get((int) (id - 1));
     }
 
-    private List<Post> createAds() {
+    private List<Post> createPosts() {
         posts.add(new Post("some title here","some description here.. and more", (long) 1));
         posts.add(new Post("another title here", "another description here.. and  even more", (long) 2));
         posts.add(new Post("and a final here", "final description here.. and  lastly more", (long) 3));

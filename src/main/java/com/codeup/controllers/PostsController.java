@@ -5,10 +5,8 @@ import com.codeup.Svc.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +17,7 @@ import java.util.List;
 @Controller
 public class PostsController {
     private PostSvc postDao;
+
     @Autowired
     public PostsController(PostSvc postDao) {
         this.postDao = postDao;
@@ -39,15 +38,40 @@ public class PostsController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String form() {
-        return "view the form for creating a post";
+    public String form(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("posts/create")
-    @ResponseBody
-    public String create() {
-        return "create a new posts";
+    public String create(
+            @RequestParam(name="title") String title,
+            @RequestParam(name="body") String body,
+            Model model
+    ) {
+        Post post = new Post(title, body);
+        postDao.save(post);
+        model.addAttribute("post", post);
+        return "posts/create";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String showEdit(@PathVariable long id, Model model) {
+        Post post = postDao.findOne(id);
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/edit")
+    public String edit(
+            @RequestParam(name="title") String title,
+            @RequestParam(name="body") String body,
+            Model model
+    ) {
+        Post post = new Post(title, body);   //creating new post from edit for current testing purposes
+        postDao.save(post);
+        model.addAttribute("post", post);
+        return "redirect:/posts";
     }
 
 
