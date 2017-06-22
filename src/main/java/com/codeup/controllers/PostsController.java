@@ -2,6 +2,7 @@ package com.codeup.controllers;
 
 import com.codeup.Model.Post;
 import com.codeup.Svc.PostSvc;
+import com.codeup.Svc.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostsController {
     private PostSvc postSvc;
+    private UserSvc userSvc;
+
 
     @Autowired
-    public PostsController(PostSvc postSvc) {
+    public PostsController(PostSvc postSvc, UserSvc userSvc) {
+        this.userSvc = userSvc;
         this.postSvc = postSvc;
     }
 
