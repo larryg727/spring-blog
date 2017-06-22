@@ -13,8 +13,15 @@
 <div th:include="fragments :: form"></div>
 
     <button type="submit">Update</button>
+
 </form>
-<a th:href="${'/delete/' + post.id}"><button>delete</button></a>
+
+<form action="/posts/delete" method="post" th:object="${post}">
+    <input type="hidden" name="id" id="id" th:value="${post.id}" />
+    <button type="submit">Delete</button>
+
+</form>
+
 
 
 </body>
