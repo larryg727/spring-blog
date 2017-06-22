@@ -5,37 +5,34 @@ import com.codeup.Repositories.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by larryg on 6/20/17.
  */
 @Service("postSvc")
 public class PostSvc {
-    private PostsRepository postsRepository;
+    private PostsRepository postsDao;
 
 
 @Autowired
-public PostSvc(PostsRepository postsRepository) {
-    this.postsRepository = postsRepository;
+public PostSvc(PostsRepository postsDao) {
+    this.postsDao = postsDao;
 
 }
 
     public Iterable<Post> findAll() {
-    return postsRepository.findAll();
+    return postsDao.findAll();
     }
 
     public void save(Post post) {
-        postsRepository.save(post);
+        postsDao.save(post);
     }
 
     public Post findOne(long id) {
-        return postsRepository.findOne(id);
+        return postsDao.findOne(id);
     }
 
     public void deletePost(long id) {
-     postsRepository.delete(id);
+     postsDao.delete(id);
     }
 
 

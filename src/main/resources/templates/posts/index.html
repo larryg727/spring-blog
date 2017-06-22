@@ -5,10 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-
+    <nav th:replace="fragments :: navBar"></nav>
 <div th:each="post: ${posts}">
-    <h1 th:text="${post.title}"></h1>
+    <a th:href="'posts/' + ${post.id}"><h1 th:text="${post.title}"></h1></a>
     <h3 th:text="${post.body}"></h3>
+    <a th:href="'posts/' + ${post.id} + '/edit'"><h3>Edit/ Delete Post</h3></a>
 
 </div>
 

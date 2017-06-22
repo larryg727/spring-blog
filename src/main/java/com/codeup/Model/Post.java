@@ -6,6 +6,7 @@ import javax.persistence.*;
  * Created by larryg on 6/19/17.
  */
 @Entity
+@Table(name = "posts")
 public class Post {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +17,17 @@ public class Post {
 
    @Column(nullable = false)
    private String body;
+
+   @OneToOne
+   private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Post(String title, String body, Long id) {
         this.title = title;
