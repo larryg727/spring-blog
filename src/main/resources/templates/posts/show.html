@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="fragments :: navBar"></nav>
 
 <h1 th:text="${post.title}"></h1>
 <h3 th:text="${post.body}"></h3>

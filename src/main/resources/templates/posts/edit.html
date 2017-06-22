@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="fragments :: navBar"></nav>
 <h1>Edit a Post</h1>
 
 <form action="/posts/edit" method="post" th:object="${post}">
