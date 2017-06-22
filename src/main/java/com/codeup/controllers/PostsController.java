@@ -67,9 +67,8 @@ public class PostsController {
     }
 
     @PostMapping("/posts/delete")
-    public String delete(@RequestParam long id) {
-        System.out.println(id);
-        postSvc.deletePost(id);
+    public String delete(@ModelAttribute Post post) {
+        postSvc.deletePost(post.getId());
         return "redirect:/posts";
     }
 
