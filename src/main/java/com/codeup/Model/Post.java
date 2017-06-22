@@ -21,6 +21,14 @@ public class Post {
    @OneToOne
    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Post(String title, String body, Long id) {
         this.title = title;
         this.body = body;
