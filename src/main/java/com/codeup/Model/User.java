@@ -13,16 +13,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     public User() {
+    }
+
+    public User (User user){
+        id = user.id;
+        username = user.username;
+        password = user.password;
+        email = user.email;
     }
 
     public long getId() {

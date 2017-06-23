@@ -1,5 +1,5 @@
 package com.codeup.Svc;
-
+import com.codeup.Model.User;
 import com.codeup.Repositories.UsersRepostitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +14,9 @@ public class UserSvc {
     @Autowired
     public UserSvc(UsersRepostitory userDao){
         this.userDao = userDao;
+    }
+
+    public User findOne(long id){
+        return userDao.findOne(id);
     }
 }

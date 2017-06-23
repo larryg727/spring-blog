@@ -1,6 +1,7 @@
 package com.codeup.controllers;
 
 import com.codeup.Model.Post;
+import com.codeup.Model.User;
 import com.codeup.Svc.PostSvc;
 import com.codeup.Svc.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class PostsController {
         this.postSvc = postSvc;
     }
 
+
+    
     @GetMapping("/posts")
     public String showAll(Model model) {
         Iterable<Post> postList = postSvc.findAll();
@@ -49,6 +52,8 @@ public class PostsController {
             @RequestParam(name="body") String body
     ) {
         Post post = new Post(title, body);
+        User user = userSvc.findOne(1);
+        post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
     }
