@@ -19,4 +19,9 @@ public class UserSvc {
     public User findOne(long id){
         return userDao.findOne(id);
     }
+
+
+    public void save(User user) {
+        userDao.save(user);
+    }
 }
