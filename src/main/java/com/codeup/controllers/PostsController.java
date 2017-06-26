@@ -5,6 +5,7 @@ import com.codeup.Model.User;
 import com.codeup.Svc.PostSvc;
 import com.codeup.Svc.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class PostsController {
             @RequestParam(name="body") String body
     ) {
         Post post = new Post(title, body);
-        User user = userSvc.findOne(1);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
