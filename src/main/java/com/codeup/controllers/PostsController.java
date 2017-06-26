@@ -1,12 +1,17 @@
 package com.codeup.controllers;
 
 import com.codeup.Model.Post;
+import com.codeup.Model.User;
 import com.codeup.Svc.PostSvc;
 import com.codeup.Svc.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * Created by larryg on 6/19/17.
@@ -23,6 +28,8 @@ public class PostsController {
         this.postSvc = postSvc;
     }
 
+
+    
     @GetMapping("/posts")
     public String showAll(Model model) {
         Iterable<Post> postList = postSvc.findAll();
@@ -45,10 +52,17 @@ public class PostsController {
 
     @PostMapping("posts/create")
     public String create(
-            @RequestParam(name="title") String title,
-            @RequestParam(name="body") String body
+            @Valid Post post,
+            Errors validation,
+            Model model
     ) {
-        Post post = new Post(title, body);
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
     }
@@ -67,9 +81,8 @@ public class PostsController {
     }
 
     @PostMapping("/posts/delete")
-    public String delete(@RequestParam long id) {
-        System.out.println(id);
-        postSvc.deletePost(id);
+    public String delete(@ModelAttribute Post post) {
+        postSvc.deletePost(post.getId());
         return "redirect:/posts";
     }
 
