@@ -1,6 +1,7 @@
 package com.codeup.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /**
  * Created by larryg on 6/19/17.
@@ -13,9 +14,11 @@ public class Post {
     private Long id;
 
    @Column(nullable = false, length = 100)
+   @Size(min = 3, message = "Posts titles must be at least 3 characters.")
     private String title;
 
    @Column(nullable = false)
+   @Size(min = 5, message = "Please create a longer post. Minimum of 5 characters.")
    private String body;
 
    @OneToOne
