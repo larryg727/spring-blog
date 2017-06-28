@@ -36,7 +36,7 @@ public PostSvc(PostsRepository postsDao) {
     }
 
     public Iterable<Post> findByUser(long id) {
-    return postsDao.findAllBy(id);
+    return postsDao.findPostsByUserId(id);
     }
 
 

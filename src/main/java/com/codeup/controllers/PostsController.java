@@ -101,20 +101,40 @@ public class PostsController {
             model.addAttribute("post", post);
             return "posts/edit";
         }else{
-            return "redirect:/posts";
+            return "redirect:/profile";
         }
     }
 
     @PostMapping("/posts/edit")
-    public String edit(@ModelAttribute Post post) {
+    public String edit(@ModelAttribute Post post,  @RequestParam(name = "file") MultipartFile uploadedFile) {
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        post.setImageUrl(filename);
+        User userloggedin = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(userloggedin);
         postSvc.save(post);
-        return "redirect:/posts";
+        return "redirect:/profile";
     }
 
     @PostMapping("/posts/delete")
     public String delete(@ModelAttribute Post post) {
         postSvc.deletePost(post.getId());
-        return "redirect:/posts";
+        return "redirect:/profile";
+    }
+
+    @GetMapping("/profile")
+    public String usersPost(Model model) {
+        User userloggedin = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Iterable<Post> postByUser = postSvc.findByUser(userloggedin.getId());
+        model.addAttribute("user", userloggedin);
+        model.addAttribute("posts", postByUser);
+        return "posts/user";
     }
 
 

@@ -5,7 +5,7 @@
 <nav th:replace="fragments :: navBar"></nav>
 <h1>Edit a Post</h1>
 
-<form th:action="@{/posts/edit}" th:method="post" th:object="${post}">
+<form th:action="@{/posts/edit}" th:method="post" th:object="${post}" enctype="multipart/form-data">
 
 <div th:include="fragments :: postForm"></div>
 

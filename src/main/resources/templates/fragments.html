@@ -18,9 +18,10 @@
             <button sec:authorize="!isAuthenticated()"><a href="/register">Register</a></button>
             <button sec:authorize="!isAuthenticated()"><a href="/login">Login</a></button>
             <button sec:authorize="hasRole('ADMIN')"><a href="/admin">Admin</a></button>
-            <div sec:authorize="isAuthenticated()">
+                <button sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></button>
+                <div sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
-                <button type="submit">Logout</button>
+                <button type="submit"><a>Logout</a></button>
             </form>
             </div>
 

@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by larryg on 6/21/17.
  */
 public interface PostsRepository extends CrudRepository<Post, Long> {
-    public Iterable<Post> findAllBy(long id);
+    public Iterable<Post> findPostsByUserId(long id);
 }
