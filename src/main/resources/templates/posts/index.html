@@ -3,6 +3,7 @@
 <head th:include="fragments :: header('All Posts')" />
 <body>
     <nav th:replace="fragments :: navBar"></nav>
+    <div id="postsContainer">
 <div th:each="post: ${posts}">
     <a th:href="'posts/' + ${post.id}"><h1 th:text="${post.title}"></h1></a>
     <div th:if="${post.imageUrl}">
@@ -12,6 +13,7 @@
     <a th:href="'posts/' + ${post.id} + '/edit'"><h3>Edit/ Delete Post</h3></a>
 
 </div>
+    </div>
 
 </body>
 </html>

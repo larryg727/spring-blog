@@ -1,3 +1,45 @@
-body {
-    /*background-color: powderblue;*/
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.32);
+}
+
+#header h1 {
+    font-size: 39px;
+    margin: 4px auto;
+}
+
+#menuContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+nav button {
+    width: 120px;
+    height: 38px;
+    padding: 0;
+    border-radius: 8px;
+    border-color: transparent;
+    margin: 9px 15px;
+    background-color: dodgerblue;
+    font-size: 1em;
+}
+
+nav button a {
+    text-decoration: none;
+    color: white;
+}
+
+#postsContainer {
+    width: 85%;
+    margin: 0 auto;
+
 }
