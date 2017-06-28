@@ -35,6 +35,9 @@ public PostSvc(PostsRepository postsDao) {
      postsDao.delete(id);
     }
 
+    public Iterable<Post> findByUser(long id) {
+    return postsDao.findAllBy(id);
+    }
 
 
 
