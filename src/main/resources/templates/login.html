@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Log In</title>
-</head>
+<head th:include="fragments :: header('Login')" />
 <body>
+<nav th:replace="fragments :: navBar"></nav>
 <h1>Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.

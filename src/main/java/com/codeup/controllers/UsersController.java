@@ -29,6 +29,13 @@ public class UsersController {
         public String showLoginForm() {
             return "login";
         }
+
+        @GetMapping("/admin")
+        public String admin(){
+            return "admin";
+
+
+        }
     }
 
     @GetMapping("/register")
@@ -43,4 +50,9 @@ public class UsersController {
     userSvc.save(user);
     return "redirect:/posts";
     }
+
+
+
+
+
 }

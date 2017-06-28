@@ -1,7 +1,11 @@
 package com.codeup.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * Created by larryg on 6/19/17.
@@ -22,7 +26,12 @@ public class Post {
    private String body;
 
    @OneToOne
+   @JsonManagedReference
    private User user;
+
+   @Column
+   private String imageUrl;
+
 
     public User getUser() {
         return user;
@@ -69,5 +78,13 @@ public class Post {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

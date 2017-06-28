@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
+<head th:include="fragments :: header('Edit Post')" />
 <body>
 <nav th:replace="fragments :: navBar"></nav>
 <h1>Edit a Post</h1>
 
 <form th:action="@{/posts/edit}" th:method="post" th:object="${post}">
 
-<div th:include="fragments :: form"></div>
+<div th:include="fragments :: postForm"></div>
 
     <button type="submit">Update</button>
 
