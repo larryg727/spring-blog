@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
+<head th:include="fragments :: header('Create Post')" />
 <body>
+<nav th:replace="fragments :: navBar"></nav>
+
 <h1>Create a Post</h1>
 
-<form action="/posts/create" method="post" th:object="${post}">
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}" enctype="multipart/form-data">
 
-    <div th:include="fragments/postForm :: form"></div>
+    <div th:include="fragments :: postForm"></div>
 
     <button type="submit">Submit</button>
 </form>

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<head th:include="fragments :: header('All Posts')" />
 <body>
-
+    <nav th:replace="fragments :: navBar"></nav>
 <div th:each="post: ${posts}">
-    <h1 th:text="${post.title}"></h1>
+    <a th:href="'posts/' + ${post.id}"><h1 th:text="${post.title}"></h1></a>
+    <div th:if="${post.imageUrl}">
+    <img th:src="'/uploads/' + ${post.imageUrl}" alt="" width="150" height="auto" />
+    </div>
     <h3 th:text="${post.body}"></h3>
+    <a th:href="'posts/' + ${post.id} + '/edit'"><h3>Edit/ Delete Post</h3></a>
 
 </div>
 

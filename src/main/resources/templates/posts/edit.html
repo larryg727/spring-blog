@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
+<head th:include="fragments :: header('Edit Post')" />
 <body>
+<nav th:replace="fragments :: navBar"></nav>
 <h1>Edit a Post</h1>
 
-<form action="/posts/edit" method="post" th:object="${post}">
+<form th:action="@{/posts/edit}" th:method="post" th:object="${post}">
 
-<div th:include="fragments/postForm :: form"></div>
+<div th:include="fragments :: postForm"></div>
 
     <button type="submit">Update</button>
+
 </form>
+
+<form th:action="@{/posts/delete}" th:method="post" th:object="${post}">
+    <input type="hidden" name="id" id="id" th:value="${post.id}" />
+    <button type="submit">Delete</button>
+
+</form>
+
 
 
 </body>
