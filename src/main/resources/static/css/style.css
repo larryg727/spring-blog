@@ -123,6 +123,9 @@ nav a {
 textarea#body {
     width: 70%;
     margin-right: 12%;
+    font-size: 1.1em;
+    border-radius: 8px;
+    padding: 4px;
 }
 
 input#submit {

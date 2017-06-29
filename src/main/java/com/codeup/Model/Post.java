@@ -21,7 +21,7 @@ public class Post {
    @Size(min = 3, message = "Posts titles must be at least 3 characters.")
     private String title;
 
-   @Column(nullable = false)
+   @Column(nullable = false, columnDefinition="TEXT")
    @Size(min = 5, message = "Please create a longer post. Minimum of 5 characters.")
    private String body;
 
