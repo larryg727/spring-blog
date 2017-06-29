@@ -64,8 +64,6 @@ public class PostsController {
         List<Comment> postComments = commentSvc.allCommentsByPost(post);
 
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
-
-            System.out.println("inside of if statement");
             User userloggedin = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             model.addAttribute("userloggedin", userloggedin);
         }

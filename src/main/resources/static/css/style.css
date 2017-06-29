@@ -12,7 +12,7 @@ a {
 }
 
 a:hover {
-    color: #232323;
+    color: #da5e5e;
 }
 
 nav {
@@ -211,6 +211,41 @@ div.comment:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.40);
 }
 
+#cancel {
+    text-align: center;
+    background-color: #950001;
+    color: #ffffff;
+    font-size: 1.4em;
+    border-radius: 8px;
+    width: 25px;
+    padding: 5px;
+    float: right;
+    margin-top: 21px;
+}
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    width: inherit;
+}
+
+button#edit {
+    width: 120px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 8px;
+    border-color: transparent;
+    margin: 0 auto;
+    background-color: #ffe000;
+    font-size: 1em;
+    color: #232323;
+}
+
+button#edit:hover {
+    cursor: pointer;
+}
 
 
