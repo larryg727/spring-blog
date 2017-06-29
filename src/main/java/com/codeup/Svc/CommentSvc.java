@@ -27,4 +27,8 @@ public class CommentSvc {
     public List<Comment> allCommentsByPost(Post post) {
         return commentsDao.findCommentsByPost(post);
     }
+
+    public void deleteComment(Long id) {
+        commentsDao.delete(id);
+    }
 }

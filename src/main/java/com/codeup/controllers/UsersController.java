@@ -48,7 +48,7 @@ public class UsersController {
     public String createUser(@ModelAttribute User user){
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userSvc.save(user);
-    return "redirect:/posts";
+    return "redirect:/profile";
     }
 
 

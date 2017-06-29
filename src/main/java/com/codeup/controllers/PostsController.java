@@ -62,6 +62,13 @@ public class PostsController {
     public  String showPost(@PathVariable long id, Model model) {
         Post post = postSvc.findOne(id);
         List<Comment> postComments = commentSvc.allCommentsByPost(post);
+
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+
+            System.out.println("inside of if statement");
+            User userloggedin = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            model.addAttribute("userloggedin", userloggedin);
+        }
         model.addAttribute("comments", postComments);
         model.addAttribute("comment", new Comment());
         model.addAttribute("post", post);
@@ -164,6 +171,12 @@ public class PostsController {
         model.addAttribute("user", userloggedin);
         model.addAttribute("posts", postByUser);
         return "posts/user";
+    }
+
+    @PostMapping("/delete/comment")
+    public String deleteComment(@RequestParam(name = "comment_id") Long id, @RequestParam(name = "postid") Long postId) {
+        commentSvc.deleteComment(id);
+       return "redirect:/posts/" + postId;
     }
 
 

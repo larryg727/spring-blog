@@ -17,9 +17,18 @@
     <div class="postComments">
         <h2>Comments</h2>
         <div class="comment" th:each="comment : ${comments}">
-            <h4>Posted by: <span th:text="${comment.user.username}"></span></h4>
             <p th:text="${comment.message}"></p>
-        </div>
+            <h4>Posted by: <span th:text="${comment.user.username}"></span></h4>
+            <div sec:authorize="isAuthenticated()">
+                <div th:if="${userloggedin.username == comment.user.username}">
+                    <form th:action="@{/delete/comment}" th:method="post">
+                        <input type="hidden" id="comment_id" name="comment_id" th:value="${comment.id}" />
+                        <input type="hidden" id="postid" name="postid" th:value="${post.id}" />
+                        <input  type="submit" id="delete" value="Delete" />
+                    </form>
+                </div>
+            </div>
+            </div>
 
     </div>
 
