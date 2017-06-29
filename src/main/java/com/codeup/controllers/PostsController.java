@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Created by larryg on 6/19/17.
@@ -60,6 +61,8 @@ public class PostsController {
     @GetMapping("/posts/{id}")
     public  String showPost(@PathVariable long id, Model model) {
         Post post = postSvc.findOne(id);
+        List<Comment> postComments = commentSvc.allCommentsByPost(post);
+        model.addAttribute("comments", postComments);
         model.addAttribute("comment", new Comment());
         model.addAttribute("post", post);
         return "posts/show";

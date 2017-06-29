@@ -127,7 +127,7 @@ nav a {
     margin-right: 8px;
 }
 
-textarea#body {
+textarea#body, textarea#message {
     width: 70%;
     margin-right: 12%;
     font-size: 1.1em;
@@ -180,4 +180,25 @@ input#submit {
 #headliner h2 {
     color: #b9b9b9;
 }
+
+.postComments {
+    margin: 35px auto;
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.comment {
+    width: 100%;
+    margin: 25px 0 25px -20px;
+    padding: 20px;
+}
+
+div.comment:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.40);
+}
+
+
+
 
