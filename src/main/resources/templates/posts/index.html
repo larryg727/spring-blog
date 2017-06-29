@@ -7,7 +7,7 @@
     <div id="postsContainer">
 <div th:each="post: ${posts}" class="post">
     <a th:href="'posts/' + ${post.id}"><h1 th:text="${post.title}"></h1></a>
-    <div th:if="${post.imageUrl}">
+    <div th:if="${!post.imageUrl.isEmpty()}">
     <img th:src="'/uploads/' + ${post.imageUrl}" alt="" />
     </div>
     <p>Posted by: <span th:text="${post.user.username}"></span></p>
