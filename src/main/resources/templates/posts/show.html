@@ -21,7 +21,7 @@
             <h4>Posted by: <span th:text="${comment.user.username}"></span></h4>
             <div sec:authorize="isAuthenticated()">
                 <div th:if="${userloggedin.username == comment.user.username}">
-                    <form th:action="@{/delete/comment}" th:method="post">
+                    <form th:action="@{/delete/comment}" th:method="post" onSubmit="if(!confirm('Are you sure you want to delete?')){return false;}">
                         <input type="hidden" id="comment_id" name="comment_id" th:value="${comment.id}" />
                         <input type="hidden" id="postid" name="postid" th:value="${post.id}" />
                         <input  type="submit" id="delete" value="Delete" />

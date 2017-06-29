@@ -147,6 +147,18 @@ input#submit {
     color: white;
 }
 
+input#delete {
+    width: 120px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 8px;
+    border-color: transparent;
+    margin: 0 auto;
+    background-color: #950001;
+    font-size: 1em;
+    color: white;
+}
+
 #hero {
     width: 100%;
     height: 800px;
