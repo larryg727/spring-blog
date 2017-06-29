@@ -92,7 +92,7 @@ public class PostsController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/posts/{id}/edit")
+    @GetMapping("/edit/{id}")
     public String showEdit(@PathVariable long id, Model model) {
         Post post = postSvc.findOne(id);
         User author = post.getUser();

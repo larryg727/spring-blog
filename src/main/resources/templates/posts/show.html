@@ -3,10 +3,11 @@
 <head th:include="fragments :: header('Blog Post')" />
 <body>
 <nav th:replace="fragments :: navBar"></nav>
-
+<div id="postsContainer">
 <h1 th:text="${post.title}"></h1>
 <h3 th:text="${post.body}"></h3>
-<h5>Poster contact: <span th:text="${post.user.email}"></span></h5>
-
+    <p>Posted by: <span th:text="${post.user.username}"></span></p>
+<p>Email: <span th:text="${post.user.email}"></span></p>
+</div>
 </body>
 </html>

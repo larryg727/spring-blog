@@ -3,16 +3,17 @@
 <head th:include="fragments :: header('Create Post')" />
 <body>
 <nav th:replace="fragments :: navBar"></nav>
-
+<div id="postsContainer">
 <h1>Create a Post</h1>
 
 <form th:action="@{/posts/create}" th:method="post" th:object="${post}" enctype="multipart/form-data">
 
     <div th:include="fragments :: postForm"></div>
-
-    <button type="submit">Submit</button>
+    <div class="form-group">
+    <button type="submit" id="submit">Submit</button>
+    </div>
 </form>
-
+</div>
 
 </body>
 </html>

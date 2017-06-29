@@ -3,6 +3,7 @@
 <head th:include="fragments :: header('Login')" />
 <body>
 <nav th:replace="fragments :: navBar"></nav>
+<div id="postsContainer">
 <h1>Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
@@ -12,11 +13,18 @@
 </div>
 
 <form th:action="@{/login}" th:method="post">
+    <div class="form-group">
     <label for="username">Username</label>
     <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
     <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
+    </div>
+    <div class="form-group">
+        <input type="submit" id="submit" value="Log In" />
+    </div>
 </form>
+</div>
 </body>
 </html>

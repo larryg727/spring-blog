@@ -3,6 +3,7 @@ body, html {
     margin: 0;
     padding: 0;
     color: #4e4e4e;
+    font-family: Helvetica;
 }
 
 a {
@@ -24,6 +25,11 @@ nav {
 #header h1 {
     font-size: 39px;
     margin: 4px auto;
+    color: red;
+}
+
+#header span {
+    color: #4e4e4e;
 }
 
 #menuContainer {
@@ -44,13 +50,18 @@ nav button {
     font-size: 1em;
 }
 
+nav button:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+
+}
+
 nav a {
     text-decoration: none;
     color: #696969;
 }
 
 #postsContainer {
-    width: 65%;
+    width: 75%;
     margin: 0 auto;
 
 }
@@ -59,14 +70,104 @@ nav a {
     font-size: 1.8em;
     text-align: center;
     margin: 0 auto;
-    background-color: #174a86;
-    color: white;
+    width: 75%;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: red;
     border-radius: 8px;
 }
 
-.post {
-    border: 3px solid rgba(0, 0, 0, 0.32);
-    text-align: center;
-    margin: 15px auto;
-    border-radius: 8px;
+#welcome span {
+    color: #4e4e4e;
 }
+
+.post {
+    text-align: center;
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    margin: 35px auto;
+    border-radius: 8px;
+    padding: 20px 0;
+}
+
+.post img {
+    width: 60%;
+    height: auto;
+    max-height: 400px;
+}
+
+#container div:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    width: 85%;
+    margin: 25px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+.form-group input {
+    width: 70%;
+    padding: 4px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    margin-right: 12%;
+}
+
+.form-group label{
+    font-size: 1.2em;
+    margin-top: 6px;
+    margin-right: 8px;
+}
+
+textarea#body {
+    width: 70%;
+    margin-right: 12%;
+}
+
+input#submit {
+    width: 120px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 8px;
+    border-color: transparent;
+    margin: 0 auto;
+    background-color: #005095;
+    font-size: 1em;
+    color: white;
+}
+
+#hero {
+    width: 100%;
+    height: 800px;
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+    ), url("../img/prolang.png") no-repeat top center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    font-family: Arial;
+}
+
+#headliner {
+    text-align: center;
+    font-size: 2.4em;
+    color: white;
+    margin-top: 160px;
+    line-height: 1.25;
+}
+
+#logo span{
+    color: red;
+}
+
+#logo strong{
+    font-family: Helvetica;
+    font-weight: normal;
+}
+
+#headliner h2 {
+    color: #b9b9b9;
+}
+

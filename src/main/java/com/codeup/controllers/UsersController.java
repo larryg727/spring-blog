@@ -52,7 +52,10 @@ public class UsersController {
     }
 
 
-
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 
 
 }
