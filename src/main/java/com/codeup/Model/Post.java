@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+import java.util.List;
+
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -31,6 +33,9 @@ public class Post {
 
    @Column
    private String imageUrl;
+
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+   private List<Comment> comments;
 
 
     public User getUser() {
@@ -82,6 +87,14 @@ public class Post {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setImageUrl(String imageUrl) {

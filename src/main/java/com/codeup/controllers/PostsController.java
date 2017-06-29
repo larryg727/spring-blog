@@ -1,7 +1,9 @@
 package com.codeup.controllers;
 
+import com.codeup.Model.Comment;
 import com.codeup.Model.Post;
 import com.codeup.Model.User;
+import com.codeup.Svc.CommentSvc;
 import com.codeup.Svc.PostSvc;
 import com.codeup.Svc.UserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +27,17 @@ import java.nio.file.Paths;
 public class PostsController {
     private PostSvc postSvc;
     private UserSvc userSvc;
+    private CommentSvc commentSvc;
     @Value("${file-upload-path}")
     private String uploadPath;
 
 
+
     @Autowired
-    public PostsController(PostSvc postSvc, UserSvc userSvc) {
+    public PostsController(PostSvc postSvc, UserSvc userSvc, CommentSvc commentSvc) {
         this.userSvc = userSvc;
         this.postSvc = postSvc;
+        this.commentSvc = commentSvc;
     }
 
     @GetMapping("/posts.json")
@@ -55,8 +60,29 @@ public class PostsController {
     @GetMapping("/posts/{id}")
     public  String showPost(@PathVariable long id, Model model) {
         Post post = postSvc.findOne(id);
+        model.addAttribute("comment", new Comment());
         model.addAttribute("post", post);
         return "posts/show";
+    }
+
+    @PostMapping("/comment")
+    public String addComment(
+            @Valid Comment comment,
+            Errors validation,
+            Model model,
+            @RequestParam(name = "post_id") Long id
+    ) {
+        if(validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("comment", comment);
+            return "/posts/" + id;
+        }
+        comment.setPost(postSvc.findOne(id));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        comment.setUser(user);
+        commentSvc.save(comment);
+        return "redirect:/posts/" + id;
+
     }
 
     @GetMapping("/posts/create")
