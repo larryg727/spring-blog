@@ -4,10 +4,10 @@
 <head th:include="fragments :: header('Blog Post')" />
 <body>
 <nav th:replace="fragments :: navBar"></nav>
-<div id="postContainer">
+<div id="postsContainer">
 <h1 th:text="${post.title}"></h1>
     <div th:if="${!post.imageUrl.isEmpty()}">
-        <img th:src="'/uploads/' + ${post.imageUrl}" alt="" />
+        <img id="postImg" th:src="'/uploads/' + ${post.imageUrl}" alt="" />
     </div>
 <h3 th:text="${post.body}"></h3>
     <p>Posted by: <span th:text="${post.user.username}"></span></p>
@@ -50,5 +50,6 @@
         </form>
     </div>
 </div>
+<div th:replace="fragments :: script"></div>
 </body>
 </html>

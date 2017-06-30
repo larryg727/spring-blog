@@ -61,10 +61,23 @@ nav a {
     color: #696969;
 }
 
+#menuHam div {
+    width: 40px;
+    height: 5px;
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    margin: 6px 20px;
+    display: none;
+}
+
+#menuHam div:nth-of-type(1) {
+    margin-top: 14px;
+}
+
 #postsContainer {
     width: 75%;
     margin: 0 auto;
-
+    text-align: center;
 }
 
 #welcome {
@@ -95,11 +108,7 @@ nav a {
     max-height: 400px;
 }
 
-#postContainer {
-    text-align: center;
-    width: 75%;
-    margin: 0 auto;
-}
+
 
 #container div:nth-of-type(even) {
     background-color: rgba(0, 0, 0, 0.15);
@@ -165,7 +174,7 @@ input#delete {
     background: linear-gradient(
             rgba(0, 0, 0, 0.65),
             rgba(0, 0, 0, 0.65)
-    ), url("../img/prolang.png") no-repeat top center;
+    ), url("../img/prolang2.jpg") no-repeat top center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -229,7 +238,7 @@ div.comment:nth-of-type(odd) {
 
 .right {
     float: right;
-    width: inherit;
+    width: inherit !important;
 }
 
 button#edit {
@@ -248,4 +257,83 @@ button#edit:hover {
     cursor: pointer;
 }
 
+#postImg {
+    width: 100%
+}
+
+@media screen and (max-width: 950px) {
+
+    nav button {
+        margin: 9px 0;
+    }
+
+    .form-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    textarea#body, textarea#message {
+        width: 100%;
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    #menuContainer {
+        width: 100%;
+        max-width: 100%;
+        justify-content: space-around;
+
+    }
+
+    nav {
+        flex-flow: row wrap;
+    }
+
+    nav button {
+        display: none;
+    }
+
+    #menuHam div {
+        display: block;
+    }
+
+    #headliner {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 450px){
+
+    #postsContainer {
+        width: 95%;
+    }
+
+    .postComments {
+        width: 100%;
+        margin: 35px 0;
+    }
+
+    .form-group input {
+        margin-right: 0;
+    }
+
+    #welcome {
+        width: 100%;
+    }
+
+    nav button {
+        width: 85px;
+    }
+
+    #headliner {
+        font-size: 1.3em;
+        margin-top: 120px;
+    }
+}
 

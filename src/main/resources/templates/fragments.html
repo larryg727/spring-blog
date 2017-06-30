@@ -3,6 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="header(title)">
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/style.css" />
     <title th:text='${title}'>Spring Blog</title>
 </head>
@@ -12,7 +13,13 @@
         <div id="header"><a href="/">
             <h1><span>&lt;</span>dev<span>eloper</span>blog<span>/&gt;</span></h1></a>
         </div>
+        <div id="menuHam">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
             <div id="menuContainer">
+
             <a href="/posts"><button>All Posts</button></a>
                 <a sec:authorize="isAuthenticated()" href="/posts/create"><button>Create Post</button></a>
                 <a sec:authorize="!isAuthenticated()" href="/register"><button>Register</button></a>
@@ -50,6 +57,14 @@
             <input type="hidden" name="id" id="id" th:field="*{id}" />
         </div>
 </form>
+
+<div th:fragment="script">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous" class=""></script>
+    <script src="../js/index.js"></script>
+</div>
 
 </body>
 </html>
