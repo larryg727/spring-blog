@@ -274,6 +274,7 @@ button#edit:hover {
 
     textarea#body, textarea#message {
         width: 100%;
+        margin-right: 0;
     }
 
     .form-group input {
@@ -316,7 +317,7 @@ button#edit:hover {
 
     .postComments {
         width: 100%;
-        margin: 35px 0;
+        padding: 20px 0;
     }
 
     .form-group input {
